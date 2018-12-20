@@ -60,6 +60,10 @@ class _MultiTouchAppPage extends State<MultiTouchAppPage>
     });
   }
 
+  void _handleDoubleTap(){
+    Navigator.pop(context);
+  }
+
   void _handleOnScaleUpdate(ScaleUpdateDetails details) {
     setState(() {
       _scale = (_previousScale * details.scale).clamp(1.0, 4.0);
@@ -84,6 +88,7 @@ class _MultiTouchAppPage extends State<MultiTouchAppPage>
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
+      onDoubleTap: _handleDoubleTap,
       onScaleStart: _handleOnScaleStart,
       onScaleUpdate: _handleOnScaleUpdate,
       onScaleEnd: _handleOnScaleEnd,
