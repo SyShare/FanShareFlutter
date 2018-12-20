@@ -6,10 +6,10 @@ class GrilImp implements GrilPresenter {
   GrilView _grilView;
 
   GrilRepositoryIml grilRepositoryIml;
-  int pageNow = 1;
+  int pageNow = 2;
   bool canLoad = true;
 
-  GrilImp(this._grilView){
+  GrilImp(this._grilView) {
     _grilView.setPresenter(this);
   }
 
@@ -28,7 +28,7 @@ class GrilImp implements GrilPresenter {
     //在子widget没有build时候调用上层setState()出错
     _grilView.showLoading();
     grilRepositoryIml.fetch(page).then((data) {
-      _grilView.loadSuccess(data, pageNow == 1);
+      _grilView.loadSuccess(data, pageNow == 2);
       if (data.length >= Constants.PAGE_SIZE) {
         pageNow++;
         canLoad = true;
@@ -49,7 +49,7 @@ class GrilImp implements GrilPresenter {
 
   @override
   void refreshData() {
-    pageNow = 1;
+    pageNow = 2;
     loadData(pageNow);
   }
 }

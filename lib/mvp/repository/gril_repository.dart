@@ -1,5 +1,5 @@
-import 'package:flutter_study/model/fl_model.dart';
+import 'package:flutter_study/model/gril_entity.dart';
 
 abstract class GirlRepository {
-  Future<List<FLModel>> fetch(int page);
+  Future<List<GirlBean>> fetch(int page);
 }

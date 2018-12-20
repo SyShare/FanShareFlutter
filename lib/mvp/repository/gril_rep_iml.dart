@@ -2,31 +2,32 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:dio/dio.dart';
-import 'package:flutter_study/model/fl_model.dart';
+import 'package:flutter_study/model/gril_entity.dart';
 import 'package:flutter_study/mvp/repository/gril_repository.dart';
+import 'package:flutter_study/utils/constants.dart';
 import 'package:flutter_study/utils/dio_factory.dart';
 
 class GrilRepositoryIml implements GirlRepository {
   @override
-  Future<List<FLModel>> fetch(int page) {
+  Future<List<GirlBean>> fetch(int page) {
     return getGrilList(page);
   }
 
-  Future<List<FLModel>> getGrilList(int page) async {
-    var url = "http://gank.io/api/data/" + '福利/20/$page';
+  Future<List<GirlBean>> getGrilList(int page) async {
+    String url = Constants.baseUrl + "/meituApi";
 
     print(url);
-    List flModels;
-    Response response = await dioFactory.getDio().get(url);
-
+    List grils;
+    Response response =
+        await dioFactory.getDio().get(url, data: {"page": page});
     try {
       if (response.statusCode == HttpStatus.ok) {
         var json = response.data;
-        flModels = json['results'];
+        grils = json['data'];
       }
     } catch (exception) {}
-    return flModels.map((model) {
-      return new FLModel.fromJson(model);
+    return grils.map((model) {
+      return new GirlBean.fromJson(model);
     }).toList();
 
 //    try {
@@ -34,7 +35,7 @@ class GrilRepositoryIml implements GirlRepository {
 //      var response = await request.close();
 //      if (response.statusCode == HttpStatus.ok) {
 //        var json = await response.transform(Utf8Decoder()).join();
-//        flModels = jsonDecode(json)['results'];
+//        flModels = jsonDecode(json)['data'];
 //      } else {
 //        //todo
 //      }
@@ -42,8 +43,8 @@ class GrilRepositoryIml implements GirlRepository {
 //      //todo
 //    }
 //
-//    return flModels.map((model) {
-//      return new FLModel.fromJson(model);
+//    return grils.map((model) {
+//      return new GirlBean.fromJson(model);
 //    }).toList();
   }
 }

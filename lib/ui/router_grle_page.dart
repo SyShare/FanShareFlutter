@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_study/localizations/examle_local.dart';
-import 'package:flutter_study/model/fl_model.dart';
+import 'package:flutter_study/model/gril_entity.dart';
 import 'package:flutter_study/mvp/presenter/gril_contract.dart';
 import 'package:flutter_study/mvp/presenter/gril_iml.dart';
 import 'package:flutter_study/notification_demo/custom_notification.dart';
@@ -28,7 +28,7 @@ class _GrilPageState extends State<GrilPage> implements GrilView {
       new GlobalKey<RefreshIndicatorState>();
 
   GrilPresenter grilPresenter;
-  List<FLModel> items = new List(); //数据集合
+  List<GirlBean> items = new List(); //数据集合
   int pageNow = 1; //当前夜index
   ScrollController _scrollController; //滚动控制器
   bool showBar = false; //是否显示Bar
@@ -146,7 +146,7 @@ class _GrilPageState extends State<GrilPage> implements GrilView {
   }
 
   @override
-  void loadSuccess(List<FLModel> datas, bool isRefresh) {
+  void loadSuccess(List<GirlBean> datas, bool isRefresh) {
     setState(() {
       if (isRefresh) {
         items.clear();
