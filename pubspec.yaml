@@ -48,6 +48,7 @@ flutter:
   assets:
     - images/ic_place_holder.png
     - images/ic_play.png
+    - images/avastar.jpg
 
   #  - images/a_dot_ham.jpeg
 

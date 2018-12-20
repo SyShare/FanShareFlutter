@@ -39,13 +39,13 @@ class StudyLocalizationsDelegate
 
   @override
   bool isSupported(Locale locale) {
-    return ['en', 'zh'].contains(locale.languageCode);
+    return ['zh', 'en'].contains(locale.languageCode);
   }
 
   @override
   Future<StudyLocalizations> load(Locale locale) {
     return SynchronousFuture<StudyLocalizations>(
-        StudyLocalizations(locale.languageCode == "zh"));
+        StudyLocalizations(locale.languageCode == "en"));
   }
 
   @override

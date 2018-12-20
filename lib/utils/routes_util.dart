@@ -25,7 +25,7 @@ class RouteUtil {
             opacity: animation,
             child: new FadeTransition(
               opacity:
-                  new Tween<double>(begin: 0.5, end: 1.0).animate(animation),
+                  new Tween<double>(begin: 0.1, end: 1.0).animate(animation),
               child: child,
             ),
           );

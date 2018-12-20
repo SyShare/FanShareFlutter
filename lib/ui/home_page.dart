@@ -7,6 +7,7 @@ import 'package:flutter_study/utils/constants.dart';
 import 'package:flutter_study/utils/event_bus.dart';
 import 'package:flutter_study/ui/router_grle_page.dart';
 import 'package:flutter_study/ui/router_novel_page.dart';
+import 'package:flutter_study/ui/router_mine_page.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({Key key}) : super(key: key);
@@ -42,33 +43,34 @@ class _MyHomePageState extends State<HomePage>
       children: <Widget>[
         GrilRoutePage(),
         NovelRoutePage(),
-        Container(
-          constraints: BoxConstraints.expand(),
-          child: Column(
-            children: <Widget>[
-              Text('Index 0: Home'),
-              RaisedButton(
-                onPressed: () {
-                  bus.emit(Constants.EVENT_LOADING_NAME, EventLoading.show);
-                },
-                child: Text("showLoading"),
-              ),
-              RaisedButton(
-                onPressed: () {
-                  bus.emit(Constants.EVENT_LOADING_NAME, EventLoading.hide);
-                },
-                child: Text("hidingLoading"),
-              ),
-              RaisedButton(
-                onPressed: () {
-                  bus.emit(Constants.EVENT_LOADING_NAME, EventLoading.empty);
-                },
-                child: Text("empty"),
-              ),
-            ],
-          ),
-          alignment: Alignment.center,
-        ),
+        MineRoutePage(),
+//        Container(
+//          constraints: BoxConstraints.expand(),
+//          child: Column(
+//            children: <Widget>[
+//              Text('Index 0: Home'),
+//              RaisedButton(
+//                onPressed: () {
+//                  bus.emit(Constants.EVENT_LOADING_NAME, EventLoading.show);
+//                },
+//                child: Text("showLoading"),
+//              ),
+//              RaisedButton(
+//                onPressed: () {
+//                  bus.emit(Constants.EVENT_LOADING_NAME, EventLoading.hide);
+//                },
+//                child: Text("hidingLoading"),
+//              ),
+//              RaisedButton(
+//                onPressed: () {
+//                  bus.emit(Constants.EVENT_LOADING_NAME, EventLoading.empty);
+//                },
+//                child: Text("empty"),
+//              ),
+//            ],
+//          ),
+//          alignment: Alignment.center,
+//        ),
       ],
       index: _selectedIndex,
     );
